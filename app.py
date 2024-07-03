@@ -53,11 +53,16 @@ def registro():
         direccion = form.direccion.data
         telefono = form.telefono.data
         email = form.email.data
-        
+
         cursor = mysql.connection.cursor()
-        cursor.execute('INSERT INTO clientes (rut, nombre_completo, direccion, telefono, email) VALUES (%s, %s, %s, %s, %s)', (rut, nombre_completo, direccion, telefono, email))
-        mysql.connection.commit()
-        return redirect(url_for('index'))
+        try:
+            cursor.execute('INSERT INTO clientes (rut, nombre_completo, direccion, telefono, email) VALUES (%s, %s, %s, %s, %s)', (rut, nombre_completo, direccion, telefono, email))
+            mysql.connection.commit()
+            return redirect(url_for('registro', status='success'))
+        except Exception as e:
+            print(f"Error al registrar: {e}")
+            return redirect(url_for('registro', status='error'))
+
     return render_template('registro_cliente.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -129,9 +134,13 @@ def queja_sugerencia():
         descripcion = form.descripcion.data
         
         cursor = mysql.connection.cursor()
-        cursor.execute('INSERT INTO quejas (email, descripcion) VALUES (%s, %s)', (email, descripcion))
-        mysql.connection.commit()
-        return redirect(url_for('index'))
+        try:
+            cursor.execute('INSERT INTO quejas (email, descripcion) VALUES (%s, %s)', (email, descripcion))
+            mysql.connection.commit()
+            return redirect(url_for('queja_sugerencia', status='success'))
+        except Exception as e:
+            print(f"Error al enviar queja: {e}")
+            return redirect(url_for('queja_sugerencia', status='error'))
     return render_template('queja_sugerencia_cliente.html', form=form)
 
 @app.route('/responder_queja', methods=['POST'])
@@ -181,6 +190,7 @@ def eliminar_queja():
             return redirect(url_for('dashboard', status='errorQueja'))
 
     return redirect(url_for('login'))
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

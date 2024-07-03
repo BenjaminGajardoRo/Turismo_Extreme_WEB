@@ -1,7 +1,6 @@
 // dash.js
 
 function showAlert(message, type) {
-    // Create alert element
     var alert = document.createElement('div');
     alert.className = `alert alert-${type} alert-dismissible fade show`;
     alert.role = 'alert';
@@ -9,10 +8,8 @@ function showAlert(message, type) {
         ${message}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
-    // Append alert to the container
     document.getElementById('alert-container').appendChild(alert);
 
-    // Automatically remove the alert after 5 seconds
     setTimeout(() => {
         alert.classList.remove('show');
         alert.classList.add('hide');

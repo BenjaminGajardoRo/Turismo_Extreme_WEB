@@ -1,4 +1,5 @@
-// Puedes agregar tus scripts personalizados aquí
+//script.js
+
 console.log('Scripts cargados correctamente');
 
 
