@@ -1,5 +1,3 @@
-// registro.js
-
 document.addEventListener('DOMContentLoaded', function() {
     var form = document.getElementById('registroForm');
     form.addEventListener('submit', function(event) {
