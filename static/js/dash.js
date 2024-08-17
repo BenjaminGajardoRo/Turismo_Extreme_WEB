@@ -1,4 +1,3 @@
-// dash.js
 
 function showAlert(message, type) {
     var alert = document.createElement('div');
