@@ -1,5 +1,3 @@
-//script.js
-
 console.log('Scripts cargados correctamente');
 
 
