@@ -126,7 +126,7 @@ Aplicación web para la empresa de turismo "Turismo Extremo Sur", desarrollada c
 
 ## Licencia
 
-Lincenciada x fabi <3
+
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
